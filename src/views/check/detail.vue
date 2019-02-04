@@ -4,7 +4,7 @@
         <ul>
             <li>Day 1</li>
             <li>
-                <div class="volume active">
+                <div :class="isListen ? 'volume active' : 'volume'">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -12,10 +12,10 @@
                     <span></span>
                 </div>
                 <span>00:30:24</span>
-                <a class="volumn-btn" herf="javascript: ">收听</a>
+                <a class="volumn-btn" herf="javascript: " @click="handleClick">收听</a>
             </li>
             <li class="btn">
-                <a href="javascript: ">退回</a>
+                <a href="javascript: " @click="reback">退回</a>
                 <a href="javascript: ">通过</a>
             </li>
         </ul>
@@ -29,7 +29,25 @@
      * @time 2019-02-02
     */
 
-    export default {}
+    export default {
+        data() {
+            return {    
+                isListen: false // 是否收听
+            }
+        },
+        methods: {
+
+            // 收听
+            handleClick() {
+                this.isListen = !this.isListen
+            },
+
+            // 退回
+            reback() {
+                this.$router.push({ path: 'check-evaluate' })
+            }
+        }
+    }
 </script>
 
 <style lang="less">
@@ -96,7 +114,7 @@
                 }
             }
         }
-        .volume span {
+        .active span {
             animation: load 1s ease infinite;
         }
         .volume {

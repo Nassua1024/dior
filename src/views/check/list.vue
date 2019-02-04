@@ -6,24 +6,37 @@
             <mt-tab-item id="3">已退回</mt-tab-item>
         </mt-navbar>
         <div class="day-btn">
-            <a href="javascript: ">Day 1</a>
-            <a href="javascript: ">Day 3</a>
-            <a href="javascript: ">Day 4</a>
-            <a href="javascript: ">Day 5</a>
+            <a 
+                href="javascript: " 
+                v-for="item in day" 
+                :key="item"
+                :class="daySelected == item ? 'active' : '' "
+                @click="handleClick(item)"
+            >
+                {{ item }}
+            </a>
         </div>
         <mt-tab-container v-model="selected">
             <mt-tab-container-item id="1">
-                <mt-cell title="员工编号1" to="//github.com" is-link />
-                <mt-cell title="员工编号2" to="//github.com" is-link />
-                <mt-cell title="员工编号3" to="//github.com" is-link />
-                <mt-cell title="员工编号4" to="//github.com" is-link />
-                <mt-cell title="员工编号5" to="//github.com" is-link />
+                <mt-cell title="员工编号1" to="check-detail" is-link />
+                <mt-cell title="员工编号2" to="check-detail" is-link />
+                <mt-cell title="员工编号3" to="check-detail" is-link />
+                <mt-cell title="员工编号4" to="check-detail" is-link />
+                <mt-cell title="员工编号5" to="check-detail" is-link />
             </mt-tab-container-item>
             <mt-tab-container-item id="2">
-                <mt-cell v-for="n in 4" :title="'content ' + n" :key="n" />
+                <mt-cell title="员工编号6" to="check-detail" is-link />
+                <mt-cell title="员工编号7" to="check-detail" is-link />
+                <mt-cell title="员工编号8" to="check-detail" is-link />
+                <mt-cell title="员工编号9" to="check-detail" is-link />
+                <mt-cell title="员工编号10" to="check-detail" is-link />
             </mt-tab-container-item>
             <mt-tab-container-item id="3">
-                <mt-cell v-for="n in 6" :title="'content ' + n" :key="n" />
+                <mt-cell title="员工编号11" to="check-detail" is-link />
+                <mt-cell title="员工编号12" to="check-detail" is-link />
+                <mt-cell title="员工编号13" to="check-detail" is-link />
+                <mt-cell title="员工编号14" to="check-detail" is-link />
+                <mt-cell title="员工编号15" to="check-detail" is-link />
             </mt-tab-container-item>
         </mt-tab-container>
     </div>
@@ -39,9 +52,18 @@
     export default {
         data() {
             return {
-                selected: '1'
+                selected: '1',
+                daySelected: 'Day 1',
+                day: ['Day 1', 'Day 2', 'Day 3', 'Day 4']
             }
         },
+        methods: {
+            
+            // 选择天数
+            handleClick(val) {
+                this.daySelected = val
+            }
+        }
     }
 </script>
 
@@ -65,11 +87,15 @@
             a {
                 width: 120px;
                 height: 50px;
-                border: 1px solid #ddd;
+                border: 1px solid #e7a9a9;
                 border-radius: 40px;
                 text-align: center;
                 line-height: 50px;
                 color: #000;
+            }
+            .active {
+                background: #e7a9a9;
+                color: #fff;
             }
         }
         .mint-tab-container {

@@ -4,6 +4,8 @@ import Login from '@/views/login'
 import Index from '@/views/index'
 import CheckList from '@/views/check/list'
 import CheckDetail from '@/views/check/detail'
+import Evaluate from '@/views/check/evaluate'
+import Rank from '@/views/rank'
 
 Vue.use(Router)
 
@@ -25,6 +27,14 @@ export default new Router({
       path: '/check-detail',
       name: 'CheckDetail',
       component: CheckDetail
+    }, {
+      path: '/check-evaluate',
+      name: 'Evaluate',
+      component: Evaluate
+    }, {
+      path: '/rank',
+      name: 'Rank',
+      component: Rank
     }
   ]
 })
